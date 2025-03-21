@@ -15,10 +15,16 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
 #h {
     text-decoration: none;
     color: #4a90e2;
     font-weight: bold;
+}
+
+#q:hover {
+    font-weight: bold;
+    color: #4a90e2;
 }
 
 p {
@@ -118,32 +124,65 @@ header nav a:hover {
     padding: 50px 20px;
     background: #f8f8f8;
     display: flex;
-    align-items: right;
-    justify-content: right;
-    gap: 20px;
+    align-items: center; /* Keeps image & text aligned properly */
+    justify-content: flex-start; /* Image on the left, text on the right */
+    gap: 40px; /* Space between image and text */
     max-width: 1200px;
     margin: 0 auto;
 }
 
-#about img.profile-photo {
+/* Image Flip Effect - Wrapped in a Separate Container */
+#about .about-photo-container {
+    position: relative;
     width: 300px;
     height: 300px;
     border-radius: 50%;
+    perspective: 1000px; /* Adds 3D depth */
+    flex-shrink: 0; /* Prevents shrinking */
+}
+
+/* Wrapper for Flipping Effect */
+#about .photo-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    border-radius: 50%;
+}
+
+/* Rotate on Hover */
+#about .about-photo-container:hover .photo-wrapper {
+    transform: rotateY(180deg);
+}
+
+/* Front & Back Images */
+#about .profile-photo,
+#about .back-photo {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
     object-fit: cover;
+    position: absolute;
+    backface-visibility: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#about img.profile-photo:hover {
-    transform: scale(1.05);
-}
-#experience img.profile-photo:hover {
-    transform: scale(1.05);
+/* Back Photo (Initially Hidden) */
+#about .back-photo {
+    transform: rotateY(180deg);
 }
 
-#about p {
-    flex: 1;
+/* About Text Container */
+.about-text-container {
+    flex: 1; /* Takes remaining space and prevents text from going below */
     font-size: 1.1rem;
     line-height: 1.8;
+    text-align: left;
+}
+
+#experience img.profile-photo:hover {
+    transform: scale(1.05);
 }
 
 /* Skills Section */
@@ -204,7 +243,7 @@ header nav a:hover {
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-15px);
 }
 
 .project-card img {
