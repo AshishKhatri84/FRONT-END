@@ -312,6 +312,44 @@ header nav a:hover {
     color: #4a90e2;
 }
 
+/* V-Shape inside Achievement */
+.v-shape {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .v-shape img {
+    width: 48%;
+    height: auto;
+    transform-origin: top center;
+    transition: transform 0.3s ease;
+  }
+  
+  .left-img {
+    transform: rotate(-25deg);
+  }
+  
+  .right-img {
+    transform: rotate(25deg);
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 600px) {
+    .v-shape {
+      max-width: 160px;
+    }
+  
+    .v-shape img {
+      width: 45%;
+    }
+  }
+  
+
 /* Contact Section */
 #contact {
     text-align: center;
